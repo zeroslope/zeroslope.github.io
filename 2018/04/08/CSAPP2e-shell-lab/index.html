@@ -178,7 +178,7 @@
 <p>然而第二天帮别人调代码发现自己信号处理有问题，</p>
 <p>比如，trace11的结果，对job的</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">./sdriver.pl -t trace11.txt -s ./tsh -a "-p"</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span> trace11.txt - Forward SIGINT to every process in foreground process group</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">tsh&gt;</span> ./mysplit 4</span><br><span class="line">Job [0] (11821) terminated by signal 2</span><br><span class="line"><span class="meta">tsh&gt;</span> /bin/ps a</span><br><span class="line"></span><br><span class="line">./sdriver.pl -t trace11.txt -s ./tshref -a "-p"</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">#</span> trace11.txt - Forward SIGINT to every process in foreground process group</span><br><span class="line"><span class="meta">#</span></span><br><span class="line"><span class="meta">tsh&gt;</span> ./mysplit 4</span><br><span class="line">Job [1] (11841) terminated by signal 2</span><br><span class="line"><span class="meta">tsh&gt;</span> /bin/ps a</span><br></pre></td></tr></table></figure>
-<p>在此检查了一下，发现<code>trace14</code>里面是要区分<code>job</code>个<code>progress</code>的，做了修改</p>
+<p>在此检查了一下，发现<code>trace14</code>里面是要区分<code>job</code>和<code>progress</code>的，做了修改</p>
 </section>
     <!-- Tags START -->
     
@@ -195,6 +195,13 @@
         
       </a>
     
+    
+      <a class="nav-right" href="/2018/04/10/vue-js简要介绍/">
+        
+          vue.js简要介绍
+        
+        <span class="nav-arrow"> →</span>
+      </a>
     
   </div>
 
