@@ -150,8 +150,12 @@
     <section class="markdown-content"><h2 id="为什么要使用前端框架-？"><a href="#为什么要使用前端框架-？" class="headerlink" title="为什么要使用前端框架 ？"></a>为什么要使用前端框架 ？</h2><blockquote>
 <p>在过去的十年中，网页变得更加动态化和强大了。多亏了JavaScript，我们把很多服务端代码放到了浏览器中，这样就产生了成千上万的JavaScript代码，它们连接了各式各样的HTML和CSS文件，但缺乏正规的组织形式，这也是为什么越来越多的开发者使用JavaScript框架。</p>
 </blockquote>
-<p>框架的使用可以节省开发时间，提高代码重用性，让开发变得更简单；当然框架本身的学习成本也需要考虑在内；效率也是其中的一部分因素；框架的使用也是对开发者的一种约束，按照一定的标准开发，更容易debug。</p>
-<p>生态是选择任何一个开源项目的重要因素</p>
+<p>在了解了HTML、CSS基础知识后，理论上就可以实现你想要的任何静态网页；再学习了JavaScript的知识后，就可以为网页添加丰富的交互。当网页的功能越多时，代码就越复杂，再加上没有固定的标准，代码变得越来越难以维护。</p>
+<ul>
+<li>框架的使用可以节省开发时间，提高代码重用性，让开发变得更简单，当然框架本身的学习成本也需要考虑在内；</li>
+<li>框架使用可以提升网页渲染的效率，提升交互体验；</li>
+<li>框架的使用也是对开发者的一种约束，按照一定的标准开发，更容易debug，同时也为多人协作提供了基本的保证</li>
+</ul>
 <h2 id="Why-Vue-js-？"><a href="#Why-Vue-js-？" class="headerlink" title="Why Vue.js ？"></a>Why Vue.js ？</h2><p>Vue是一款友好的、多用途且高性能的JavaScript框架。能够帮我们创建可维护性和可测试性更强的代码库。</p>
 <ul>
 <li>Approachable</li>
@@ -161,7 +165,42 @@
 <p>Vue是渐进式的JavaScript框架，也就是说，如果你已经有一个现成的服务端应用，你可以将Vue作为该应用的一部分嵌入其中，带来更加丰富的交互体验。或者你希望将更多业务逻辑放到前端来实现，那么Vue的核心库及其生态系统也可以满足你的各种需求。</p>
 <p>像其他前端框架一样，Vue允许你将一个网页分割成可复用的组件，每个组件都包含属于自己的HTML、CSS、JavaScript以用来渲染网页中相应的地方。</p>
 <p>具体的与其他框架的详细比较可以官网的<a href="https://cn.vuejs.org/v2/guide/comparison.html" target="_blank" rel="noopener">对比其他框架</a></p>
-<h2 id="简单认识一下Vue-js"><a href="#简单认识一下Vue-js" class="headerlink" title="简单认识一下Vue.js"></a>简单认识一下Vue.js</h2></section>
+<h2 id="简单体验一下Vue-js"><a href="#简单体验一下Vue-js" class="headerlink" title="简单体验一下Vue.js"></a>简单体验一下Vue.js</h2><p>我们从网页中需要展示的数据开始，假设我们有一家水果店，要显示每种商品的数量。</p>
+<p>首先，用一个简单的<code>&lt;h2&gt;</code>标签来包裹我们要表示的数据，product是我们要显示的商品。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">h2</span>&gt;</span> &#123;&#123; product &#125;&#125; 在架上。<span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>当我们打开这个网页时会发现显示的就是<code> 在架上。</code>，并没有什么特殊的地方，<code>id</code>将会在后面用到，现在忽略他。</p>
+<p>让我们来引入Vue,在<code>&lt;head&gt;</code>中加上这个标签：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://cdn.jsdelivr.net/npm/vue/dist/vue.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>然后，在<code>&lt;body&gt;</code>中加入下面的代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">    const app = new Vue(&#123;</span></span><br><span class="line"><span class="undefined">        el: '#app',</span></span><br><span class="line"><span class="undefined">        data: &#123;</span></span><br><span class="line"><span class="undefined">            product: "苹果"</span></span><br><span class="line"><span class="undefined">        &#125;</span></span><br><span class="line"><span class="undefined">    &#125;)</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>重新刷新浏览器，你会发现现在显示的是<code>香蕉在架上。</code> 。Vue成功的把我们数据和HTML联系在了一起。但是vue的魔力在数据变更时才会出现。</p>
+<p>如果我们打开控制台，更改<code>product</code>的值，在<code>product</code>的值发生改变的同时，vue自动更新了我们的HTML。这是因为VUE是响应式的<code>Reactive</code>，也就是说当我们的数据变更时，Vue会更新所有网页中用到它的地方。除了字符串，Vue对其它类型的数据也是如此。</p>
+<p>所以我们把简单的商品换成一个商品数组试试看:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">product: [<span class="string">"苹果"</span>, <span class="string">"草莓"</span>, <span class="string">"香蕉"</span>]</span><br></pre></td></tr></table></figure>
+<p>然后我们将<code>&lt;h2&gt;</code>改成一个无序列表，再为数组中的每个商品创建一个列表项：使用Vue的<code>v-for</code>指令让每个商品都有各自的列表项。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">li</span> <span class="attr">v-for</span>=<span class="string">"product in products"</span>&gt;</span></span><br><span class="line">            &#123;&#123; product &#125;&#125;</span><br><span class="line">        <span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>不过如果这还不够有说服力，现在我们先从空列表开始，然后从一个实际的API获取我们的商品信息，当应用被创建时，我们会从这个API获取最新的商品信息。获取到商品列表后，Vue会自动更新网页中的信息，各列表项展示了该API返回的对象。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123; <span class="attr">"id"</span>: <span class="number">1</span>, <span class="attr">"quantity"</span>: <span class="number">1</span>, <span class="attr">"name"</span>: <span class="string">"苹果"</span> &#125;</span><br><span class="line">&#123; <span class="attr">"id"</span>: <span class="number">2</span>, <span class="attr">"quantity"</span>: <span class="number">0</span>, <span class="attr">"name"</span>: <span class="string">"草莓"</span> &#125;</span><br><span class="line">&#123; <span class="attr">"id"</span>: <span class="number">3</span>, <span class="attr">"quantity"</span>: <span class="number">5</span>, <span class="attr">"name"</span>: <span class="string">"香蕉"</span> &#125;</span><br><span class="line">&#123; <span class="attr">"id"</span>: <span class="number">4</span>, <span class="attr">"quantity"</span>: <span class="number">2</span>, <span class="attr">"name"</span>: <span class="string">"芒果"</span> &#125;</span><br></pre></td></tr></table></figure>
+<p>这还不是常人能够读懂的样式，所以我们改变一下他的展示方式。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> &lt;li v-for=&quot;product in products&quot;&gt;</span><br><span class="line">     &#123;&#123; product.name &#125;&#125;： &#123;&#123; product.quantity &#125;&#125;</span><br><span class="line">&lt;/li&gt;</span><br></pre></td></tr></table></figure>
+<p>假设我们需要特别注意数量为零的商品，所以我们添加一个<code>&lt;span&gt;</code>，写入文字<code>已售完</code>，这里用到了<code>v-if</code>指令。因为我们的JACKET数量为零，所以显示已经售完。</p>
+<p>如果我们想要显示商品的总数怎么办呢？</p>
+<p>在HTML中加入下面的代码，用来显示商品总数：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">h3</span>&gt;</span>商品总数: &#123;&#123; totalProducts &#125;&#125;<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p> 然后在Vue的实例中添加下面的计算变量：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">computed: &#123;</span><br><span class="line">    totalProducts () &#123;</span><br><span class="line">        <span class="keyword">var</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>;i &lt; <span class="keyword">this</span>.products.length; ++ i) sum += <span class="keyword">this</span>.products[i].quantity;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>刷新页面，在我们的浏览器中，已经把商品总数准确的计算出来了。</p>
+<p>现在我们再来体会一下Vue的响应式效果，在浏览器的控制台中输入<code>app.products.pop()</code>，这个函数的作用是删除<code>products</code>数组中的最后一个元素。运行这条命令之后，我们发现芒果那一行已经不见了，而商品总数也随之发生了改变。</p>
+<p>接下来我们在页面中添加一些交互行为，通过按钮来完成。每点击一次按钮，对应的商品数量就增加1。当我们添加一个项目时，不只是更新整个库存，同时增加草莓的数量时，<code>已售完</code>的提示也不见了。</p>
+<p>如果想要增加很多个商品，重复点击可能会很麻烦，所以我们来实现可以直接改变商品数量的功能。我们只需要创建一个文本框，并通过<code>v-model</code>指令，绑定我们的商品数量字段并指明之一定是一个数字，而不是其他的数据类型。现在我们可以直接输入每个项目的总数，并且数据会被立刻更新。当我们把数量设置为0时，又看到了<code>已售完</code>的提示；而且现在增加按钮仍然能够正确的运行。</p>
+<h3 id="Vue-Devtools"><a href="#Vue-Devtools" class="headerlink" title="Vue Devtools"></a>Vue Devtools</h3><p>一个非常有用的Vue调试工具，安装地址和使用方法<a href="https://github.com/vuejs/vue-devtools" target="_blank" rel="noopener">这里</a></p>
+<p>在上面的网页中打开这个调试工具，大概长这样：</p>
+<p><img src="https://s1.ax1x.com/2018/04/11/Ck6yLT.png" alt="Ck6yLT.png"></p>
+<p>可以通过这个调试工具方便的查看数据，修改数据。</p>
+<h2 id="Vue-js基础介绍"><a href="#Vue-js基础介绍" class="headerlink" title="Vue.js基础介绍"></a>Vue.js基础介绍</h2><blockquote>
+<p>Vue (读音 /vjuː/，类似于 <strong>view</strong>) 是一套用于构建用户界面的<strong>渐进式框架</strong>。与其它大型框架不同的是，Vue 被设计为可以自底向上逐层应用。Vue 的核心库只关注视图层，不仅易于上手，还便于与第三方库或既有项目整合。另一方面，当与<a href="https://cn.vuejs.org/v2/guide/single-file-components.html" target="_blank" rel="noopener">现代化的工具链</a>以及各种<a href="https://github.com/vuejs/awesome-vue#libraries--plugins" target="_blank" rel="noopener">支持类库</a>结合使用时，Vue 也完全能够为复杂的单页应用提供驱动。</p>
+</blockquote>
+</section>
     <!-- Tags START -->
     
       <div class="tags">
@@ -209,7 +248,7 @@
   <div class="toc-main">
     <strong class="toc-title">Catalog</strong>
     
-      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#为什么要使用前端框架-？"><span class="toc-nav-text">为什么要使用前端框架 ？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Why-Vue-js-？"><span class="toc-nav-text">Why Vue.js ？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#简单认识一下Vue-js"><span class="toc-nav-text">简单认识一下Vue.js</span></a></li></ol>
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#为什么要使用前端框架-？"><span class="toc-nav-text">为什么要使用前端框架 ？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Why-Vue-js-？"><span class="toc-nav-text">Why Vue.js ？</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#简单体验一下Vue-js"><span class="toc-nav-text">简单体验一下Vue.js</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#Vue-Devtools"><span class="toc-nav-text">Vue Devtools</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#Vue-js基础介绍"><span class="toc-nav-text">Vue.js基础介绍</span></a></li></ol>
     
   </div>
 </aside>
